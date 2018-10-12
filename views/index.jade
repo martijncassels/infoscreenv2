@@ -1,0 +1,96 @@
+extends layout
+
+block append body
+	nav
+		// navbar content here
+		.nav-wrapper.purple.darken-3
+			a.sidenav-trigger.show-on-large(href='#', data-target='slide-out')
+				i.material-icons menu
+			a.brand-logo(href='/') Infoscreenv2
+			ul#nav-mobile.right.hide-on-med-and-down
+				li
+	.container-fluid
+		.row
+			.col.s12
+				ul(ng-controller='MainCtrl as main')#slide-out.sidenav
+					li
+						.user-view
+							.background
+								img(src='./img/Flower_tours_Amsterdam_Holland-6.jpg').responsive-img
+							a(href='#user')
+								img.circle(src='http://www.axerrio.com/portals/3/C_Online1.jpg')
+							a(href='#name')
+								span.white-text.name Helpdesk
+							a(href='#email')
+								span.white-text.email helpdesk@axerrio.com
+					li
+						span Screens
+					//- li
+					//- 	.input-field
+					//- 		i.material-icons.prefix search
+					//- 		input.icon_prefix.validate(ng-model="main.searchAlias",type='text', placeholder='Search', aria-label='Search')
+					//- li(ng-repeat='server in main.servers | filter: {Alias:main.searchAlias}')
+					//- 	a(href='/server/{{server.escaped}}/{{server.Alias}}/{{server.Notes}}',ng-hide='((server.Description=="none") || !server.Alias)').sidenav-close
+					//- 		i(ng-class="{'green-text' : (server.hbMin_ago<30 && server.hbMin_ago!==null && server.Min_ago===null) , 'red-text' : (server.hbMin_ago>30 || server.Min_ago!==null)}").tiny.material-icons computer
+					//- 		| {{server.Alias}} - {{server.Description}}
+					li(ng-repeat='screen in main.screens')
+						a(href='{{screen.url}}/100/0/0/5').sidenav-close
+							{{screen.title}}
+					//- </ul>
+				div(ng-view).container-fluid
+
+block scripts
+	script(src='https://code.jquery.com/jquery-1.12.4.min.js')
+	//- Angular core
+	script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js')
+	script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js')
+	//- script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-touch/1.4.5/angular-touch.min.js')
+	script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-aria.min.js')
+	script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.min.js')
+	script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-messages.min.js')
+	script(src='js/app.js')
+	script(src='js/services.js')
+	script(src='js/controllers.js')
+	script(src='js/filters.js')
+	script(src='js/directives.js')
+	//- script(src='js/app.min.js')
+	//- script(src='js/gruntapp.min.js')
+	//- Angular dependencies
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
+	script(src='js/lib/angular-underscore/angular-underscore-module.js')
+	script(src='js/lib/ui-bootstrap/ui-bootstrap-2.5.0.min.js')
+	script(src='js/lib/ui-bootstrap/ui-bootstrap-tpls-2.5.0.min.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js')
+	script(src='//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js')
+	script(src='http://momentjs.com/downloads/moment.min.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.2.0/angular-moment.min.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.js')
+	script(src='js/lib/angular-dynamic-locale/tmhDynamicLocale.min.js')
+	script(src='js/lib/oboe/oboe-browser.js')
+	script(src='js/lib/angular-oboe/angular-oboe.js')
+	//- Bootstrap core JavaScript
+	//-  ==================================================
+	//- Placed at the end of the document so the pages load faster
+	//- script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+	//- script.
+	//- 	window.jQuery || document.write('<script src="https://getbootstrap.com/assets/js/vendor/jquery-slim.min.js"><\\/script>')
+	//- script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js')
+	//- script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js')
+	// Compiled and minified JavaScript Materialize CSS
+	//-  ==================================================
+	//- Placed at the end of the document so the pages load faster
+	//- script(src='https://code.jquery.com/jquery-1.12.4.min.js')
+	script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js')
+	script(src='https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js')
+	script.
+		$(document).ready(function(){
+		$('.sidenav').sidenav({draggable: true});
+		});
+	//- script.
+	//- 	$(document).ready(function(){
+	//- 		$('.fixed-action-btn').floatingActionButton();
+	//- 	});	
+	//- script(src='js/lib/offcanvas.js')
+	//- Icons
+	//- script(src='https://unpkg.com/feather-icons/dist/feather.min.js')
+	//- script(defer='', src='https://use.fontawesome.com/releases/v5.0.6/js/all.js')

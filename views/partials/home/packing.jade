@@ -1,0 +1,92 @@
+//- Start Content
+script(type='text/ng-template', id='packing.html').
+	<div class="fixed-action-btn">
+	<a class="btn-floating btn-large purple darken-3">
+		<i class="large material-icons">mode_edit</i>
+	</a>
+	<ul>
+		<li><button data-tooltip="Update data" ng-click='vm.getLiveChartData()' class="btn-floating red tooltipped"><i class="material-icons">update</i></button></li>
+	</ul>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.fixed-action-btn').floatingActionButton();
+			$('.tooltipped').tooltip({position: 'left'});
+			$('.chips').chips();
+		});	
+	</script>
+	<style>
+		.md-chips.md-focused {
+			box-shadow: none;
+		}
+	</style>
+ng-include(src="'packing.html'")
+//- .row
+//- 	.col.s12.m12
+//- 		div(ng-repeat='data in vm.data').card
+//- 			.card-content
+//- 				p ManualShipmentNr: {{data.ManualShipmentNr}}
+.row
+	.col.s12.m12
+		div(ng-show='vm.data.length>0')
+			table.responsive-table
+				thead
+					tr
+						//- th(ng-repeat='(key,value) in ::vm.data[0]') {{::key}}
+						th shipmentkey
+						th ManualShipmentNr
+						th Time
+						th Exporter
+						th Boxes
+						th Stems
+						th ShipmentRemark
+						th DateDiff
+						th ShipDate
+						th Country
+						th threshold
+						th BoxesScanned
+						th StemsScanned
+						th BoxesScanned_perc
+						th BoxesPacked
+						th StemsPacked
+						th BoxesPacked_perc
+						th BoxesNotDelivered
+						th StemsNotDelivered
+						th BoxesNotDelivered_perc
+						th BoxesNotChecked
+						th StemsNotChecked
+						th BoxesNotChecked_perc
+						th BoxesMeasured
+						th StemsMeasured
+						th BoxesMeasured_perc
+				tbody
+					tr(ng-repeat='records in vm.data | orderBy: ["-ShipDate","Time"]',ng-class="{'blue lighten-4' : (records.ManualShipmentNr=='Totals')}")
+						//- td(ng-repeat='(key,value) in ::records',ng-class="{'green lighten-4' : (records.Boxes == (records.BoxesPacked/2))}") 
+						//- 	div {{value}}
+						td {{records.shipmentkey}}
+						td {{records.ManualShipmentNr}}
+						td {{records.Time}}
+						td {{records.Exporter}}
+						td {{records.Boxes}}
+						td {{records.Stems}}
+						td {{records.ShipmentRemark}}
+						td {{records.DateDiff}}
+						td {{records.ShipDate}}
+						td {{records.Country}}
+						td {{records.threshold}}
+						td {{records.BoxesScanned}}
+						td {{records.StemsScanned}}
+						td {{records.BoxesScanned_perc}}
+						td {{records.BoxesPacked}}
+						td {{records.StemsPacked}}
+						td {{records.BoxesPacked_perc}}
+						td {{records.BoxesNotDelivered}}
+						td {{records.StemsNotDelivered}}
+						td {{records.BoxesNotDelivered_perc}}
+						td {{records.BoxesNotChecked}}
+						td {{records.StemsNotChecked}}
+						td {{records.BoxesNotChecked_perc}}
+						td {{records.BoxesMeasured}}
+						td {{records.StemsMeasured}}
+						td {{records.BoxesMeasured_perc}}
+		div(ng-show='vm.data.length<1').alert.alert-info No events!
