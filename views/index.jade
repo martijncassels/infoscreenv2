@@ -19,12 +19,11 @@ block append body
 								img(src='./img/Flower_tours_Amsterdam_Holland-6.jpg').responsive-img
 							a(href='#user')
 								img.circle(src='http://www.axerrio.com/portals/3/C_Online1.jpg')
-							a(href='#name')
-								span.white-text.name Helpdesk
-							a(href='#email')
-								span.white-text.email helpdesk@axerrio.com
-					li
-						span Screens
+							span.white-text Screens
+							//- a(href='#name')
+							//- 	span.white-text.name Helpdesk
+							//- a(href='#email')
+							//- 	span.white-text.email helpdesk@axerrio.com
 					//- li
 					//- 	.input-field
 					//- 		i.material-icons.prefix search
@@ -34,8 +33,7 @@ block append body
 					//- 		i(ng-class="{'green-text' : (server.hbMin_ago<30 && server.hbMin_ago!==null && server.Min_ago===null) , 'red-text' : (server.hbMin_ago>30 || server.Min_ago!==null)}").tiny.material-icons computer
 					//- 		| {{server.Alias}} - {{server.Description}}
 					li(ng-repeat='screen in main.screens')
-						a(href='{{screen.url}}/100/0/0/5').sidenav-close
-							{{screen.title}}
+						a(href='{{screen.url}}/100/0/0/5').sidenav-close {{screen.title}}
 					//- </ul>
 				div(ng-view).container-fluid
 

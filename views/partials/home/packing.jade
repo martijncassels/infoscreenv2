@@ -5,7 +5,7 @@ script(type='text/ng-template', id='packing.html').
 		<i class="large material-icons">mode_edit</i>
 	</a>
 	<ul>
-		<li><button data-tooltip="Update data" ng-click='vm.getLiveChartData()' class="btn-floating red tooltipped"><i class="material-icons">update</i></button></li>
+		<li><button data-tooltip="Update data" ng-click='vm.getPacking()' class="btn-floating red tooltipped"><i class="material-icons">update</i></button></li>
 	</ul>
 	</div>
 	<script type="text/javascript">
@@ -26,6 +26,7 @@ ng-include(src="'packing.html'")
 //- 		div(ng-repeat='data in vm.data').card
 //- 			.card-content
 //- 				p ManualShipmentNr: {{data.ManualShipmentNr}}
+h4 {{vm.title}}
 .row
 	.col.s12.m12
 		div(ng-show='vm.data.length>0')
@@ -33,60 +34,60 @@ ng-include(src="'packing.html'")
 				thead
 					tr
 						//- th(ng-repeat='(key,value) in ::vm.data[0]') {{::key}}
-						th shipmentkey
+						//- th shipmentkey
 						th ManualShipmentNr
 						th Time
 						th Exporter
 						th Boxes
-						th Stems
+						//- th Stems
 						th ShipmentRemark
-						th DateDiff
+						//- th DateDiff
 						th ShipDate
-						th Country
-						th threshold
+						//- th Country
+						//- th threshold
 						th BoxesScanned
-						th StemsScanned
+						//- th StemsScanned
 						th BoxesScanned_perc
 						th BoxesPacked
-						th StemsPacked
+						//- th StemsPacked
 						th BoxesPacked_perc
 						th BoxesNotDelivered
-						th StemsNotDelivered
+						//- th StemsNotDelivered
 						th BoxesNotDelivered_perc
 						th BoxesNotChecked
-						th StemsNotChecked
+						//- th StemsNotChecked
 						th BoxesNotChecked_perc
-						th BoxesMeasured
-						th StemsMeasured
-						th BoxesMeasured_perc
+						//- th BoxesMeasured
+						//- th StemsMeasured
+						//- th BoxesMeasured_perc
 				tbody
-					tr(ng-repeat='records in vm.data | orderBy: ["-ShipDate","Time"]',ng-class="{'blue lighten-4' : (records.ManualShipmentNr=='Totals')}")
+					tr(ng-repeat='records in vm.data | orderBy: ["ShipDate","Time"]',ng-class="{'blue lighten-4' : (records.ManualShipmentNr=='Totals')}")
 						//- td(ng-repeat='(key,value) in ::records',ng-class="{'green lighten-4' : (records.Boxes == (records.BoxesPacked/2))}") 
 						//- 	div {{value}}
-						td {{records.shipmentkey}}
+						//- td {{records.shipmentkey}}
 						td {{records.ManualShipmentNr}}
 						td {{records.Time}}
 						td {{records.Exporter}}
 						td {{records.Boxes}}
-						td {{records.Stems}}
+						//- td {{records.Stems}}
 						td {{records.ShipmentRemark}}
-						td {{records.DateDiff}}
+						//- td {{records.DateDiff}}
 						td {{records.ShipDate}}
-						td {{records.Country}}
-						td {{records.threshold}}
+						//- td {{records.Country}}
+						//- td {{records.threshold}}
 						td {{records.BoxesScanned}}
-						td {{records.StemsScanned}}
+						//- td {{records.StemsScanned}}
 						td {{records.BoxesScanned_perc}}
 						td {{records.BoxesPacked}}
-						td {{records.StemsPacked}}
+						//- td {{records.StemsPacked}}
 						td {{records.BoxesPacked_perc}}
 						td {{records.BoxesNotDelivered}}
-						td {{records.StemsNotDelivered}}
+						//- td {{records.StemsNotDelivered}}
 						td {{records.BoxesNotDelivered_perc}}
 						td {{records.BoxesNotChecked}}
-						td {{records.StemsNotChecked}}
+						//- td {{records.StemsNotChecked}}
 						td {{records.BoxesNotChecked_perc}}
-						td {{records.BoxesMeasured}}
-						td {{records.StemsMeasured}}
-						td {{records.BoxesMeasured_perc}}
+						//- td {{records.BoxesMeasured}}
+						//- td {{records.StemsMeasured}}
+						//- td {{records.BoxesMeasured_perc}}
 		div(ng-show='vm.data.length<1').alert.alert-info No events!
